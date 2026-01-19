@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BulkyWeb.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-controller="Category" asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+@if (!Model?.Any() ?? true)
+{
+    <div class="alert alert-info">No categories found.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Category Name</th>
+                <th>Display Order</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var categories in (Model ?? Enumerable.Empty<BulkyWeb.Models.Category>()).OrderBy(u => u.DisplayOrder))
+        {
+            <tr>
+                <td>@(index++)</td>
+                    <td>@categories.Name</td>
+                    <td>@categories.DisplayOrder</td>
+                <td>
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@categories.Id" class="btn btn-sm btn-secondary">Edit</a>
+                        <a asp-controller="Category" asp-action="Details" asp-route-id="@categories.Id" class="btn btn-sm btn-info">Details</a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@categories.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
