@@ -1,0 +1,49 @@
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Categories.CreateModel
+
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<div class="row">
+    <div class="col-12">
+        <form method="post">
+            <div class="border p-3 mt-4">
+                <div class="row pb-2">
+                    <h2 class="text-primary">@ViewData["Title"]</h2>
+                    <hr />
+                </div>
+                <!--ModelOnly, None, All-->
+                <div asp-validation-summary="All"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Category.Name" class="form-label"></label>
+                    <input asp-for="Category.Name" class="form-control" />
+                    <span asp-validation-for="Category.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Category.DisplayOrder" class="form-label"></label>
+                    <input asp-for="Category.DisplayOrder" class="form-control" />
+                    <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-page="/Categories/Index" class="btn btn-outline-secondary" style="width:150px">
+                            Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        // This partial is used to include the necessary validation scripts
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

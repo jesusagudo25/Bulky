@@ -1,0 +1,43 @@
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Categories.DeleteModel
+@{
+    ViewData["Title"] = "Delete Category";
+}
+<div class="row">
+    <div class="col-12">
+        <form method="post">
+            <div class="border p-3 mt-4">
+                <div class="row pb-2">
+                    <h2 class="text-primary">@ViewData["Title"]</h2>
+                    <hr />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Category.Name" class="form-label"></label>
+                    <input asp-for="Category.Name" class="form-control" readonly />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Category.DisplayOrder" class="form-label"></label>
+                    <input asp-for="Category.DisplayOrder" class="form-control" readonly />
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary" style="width:150px">Delete</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-page="/Categories/Index" class="btn btn-outline-secondary" style="width:150px">
+                            Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        // This partial is used to include the necessary validation scripts
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
